@@ -1,0 +1,12 @@
+/* CSS declarations go here */
+#search-bar {
+  margin-top: 45px;
+}
+
+.textRight {
+  text-align: right;
+}
+h3.container {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
