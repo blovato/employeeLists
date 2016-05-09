@@ -12,28 +12,48 @@ class ListPage extends Component {
     super(props);
 
     this.state = {
-
+      searchValue: '',
     };
+  }
+
+  handleChange() {
+    this.setState({searchValue: this.refs.search.value});
+  }
+
+  goToPage(endpoint) {
+    window.location.pathname = endpoint;
   }
  
   renderEmployee() {
-    return this.props.employees.map((data) => (
+    let filteredNames = this.props.employees.filter((data) => {
+      return data.name.startsWith(this.state.searchValue);
+    });
+    return filteredNames.map((data) => (
       <Employee key={data._id} data={data} />
     ));
   }
  
   render() {
+    $('.tooltipped').tooltip({delay: 50});
     return (
       <div className="container">
         <div id="search-bar" className="input-field">
-          <input id="search" type="search"/>
-          <label for="search"><i className="material-icons">search</i></label>
+          <input ref="search" type="search" onChange={this.handleChange.bind(this)}/>
+          <label for="search">
+            <i className="material-icons">search</i>
+          </label>
         </div>
-        <div className="row">
-          <p className="col-md-2"> {this.props.employeeCount} Employees</p>
-          <a href="/new" className="col-md-2">+</a> 
-        </div>
+        <a href="#" id="fabEmployeeCount"
+           className="btn btn-floating grey lighten-1 tooltipped" 
+           data-position="bottom" data-delay="50" 
+           data-tooltip={this.props.employeeCount +" Employees"}> 
+             
+          {this.props.employeeCount}
+        </a>
         <ul className="collection">
+          <li className="collection-item-btn" onClick={this.goToPage.bind(this, '/new')}>
+            <p className="center-align">+ employee </p>
+          </li>
           {this.renderEmployee()}
         </ul>
       </div>

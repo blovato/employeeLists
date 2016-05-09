@@ -13,10 +13,10 @@ class Employee extends Component {
     return (
       <li className='collection-item'>
         <span class="title">{this.props.data.name}</span>
-        <p>{this.props.data.email}</p>
-        <a href="#" onClick={this.deleteEmployee.bind(this)}>
-          delete
+        <a className="secondary-content" href="#" onClick={this.deleteEmployee.bind(this)}>
+          <i className="material-icons">not_interested</i>
         </a>
+        <p>{this.props.data.email}</p>
       </li>
     );
   }

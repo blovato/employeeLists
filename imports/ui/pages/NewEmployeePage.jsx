@@ -30,27 +30,31 @@ class NewEmployee extends Component {
         <div className="container">
           <div className="card">
             <div className="row">
-              <form className="container">
+              <form style={{padding: '20px 30px 0px 30px'}}>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input placeholder="Name" ref="name" type="text" className="validate"/>
+                    <input required ref="name" type="text" className="validate"/>
                     <label for="name">Name</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input placeholder="email" ref="email" type="email" className="validate"/>
+                    <input required ref="email" type="email" className="validate"/>
                     <label for="email">Email</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input placeholder="position" ref="position" type="text" className="validate"/>
+                    <input required ref="position" type="text" className="validate"/>
                     <label for="position">Position</label>
                   </div>
                 </div>
                 <div className="row">
-                  <a href='#' className="btn green" onClick={this.insertEmployee.bind(this)}>Save</a>
+                  <a href='#' className="btn teal" 
+                     style={{marginLeft: '11px'}}
+                     onClick={this.insertEmployee.bind(this)}>
+                    Save
+                  </a>
                 </div>
               </form>
             </div>
