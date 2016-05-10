@@ -10,16 +10,13 @@ class NewEmployee extends Component {
 
   insertEmployee(e) {
     e.preventDefault();
-    console.log(this.refs);
+
     var name = ReactDOM.findDOMNode(this.refs.name).value.trim();
     var position = ReactDOM.findDOMNode(this.refs.position).value.trim();
     var email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+    this.props.insertEmployee(name, email, position);
 
-    this.props.insertEmployee(name, position, email);
-    console.log(window.location);
-    setTimeout(() => {
-      window.location.pathname = '/list';
-    }, 2000);
+    window.location.pathname = '/list';
   }
 
 

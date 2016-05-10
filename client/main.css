@@ -22,6 +22,10 @@ h3.container {
   margin-bottom: 20px;
 }
 
+.collection {
+  border: none !important;
+}
+
 .collection .collection-item-btn {
   background-color: #F5F2F0;
   line-height: 1.5rem;
@@ -33,4 +37,32 @@ h3.container {
 .collection .collection-item-btn:hover {
   background-color: #ECE9E7;
   cursor: pointer;
+}
+
+/* employee item animations */
+.employeeItem-appear {
+  opacity: 0.01;
+}
+
+.employeeItem-appear.employeeItem-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.employeeItem-enter {
+  opacity: 0.01;
+}
+
+.employeeItem-enter.employeeItem-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.employeeItem-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

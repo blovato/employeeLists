@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { createContainer } from 'meteor/react-meteor-data';
 
 // API imports
 import { Employees } from '../../api/employees.js';
 // Component imports
-import Employee from '../components/Employee.jsx'
+import Employee from '../components/Employee.jsx';
+
  
 // ListPage component
 class ListPage extends Component {
@@ -34,7 +36,7 @@ class ListPage extends Component {
   }
  
   render() {
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip();
     return (
       <div className="container">
         <div id="search-bar" className="input-field">
@@ -51,10 +53,17 @@ class ListPage extends Component {
           {this.props.employeeCount}
         </a>
         <ul className="collection">
-          <li className="collection-item-btn" onClick={this.goToPage.bind(this, '/new')}>
-            <p className="center-align">+ employee </p>
-          </li>
-          {this.renderEmployee()}
+          <ReactCSSTransitionGroup transitionName="employeeItem" 
+              transitionAppear={true}
+              transitionAppearTimeout={400}
+              transitionEnterTimeout={400}
+              transitionLeaveTimeout={400}>
+            <li className="collection-item-btn" onClick={this.goToPage.bind(this, '/new')}>
+              <p className="center-align">+ employee </p>
+            </li>
+
+            {this.renderEmployee()}
+          </ReactCSSTransitionGroup>
         </ul>
       </div>
     );
