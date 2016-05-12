@@ -19,7 +19,9 @@ class ListPage extends Component {
   }
 
   handleChange() {
-    this.setState({searchValue: this.refs.search.value});
+    this.setState({searchValue: this.refs.search.value}, () => {
+      console.log(this.state.searchValue);
+    });
   }
 
   goToPage(endpoint) {
@@ -34,7 +36,7 @@ class ListPage extends Component {
       <Employee key={data._id} data={data} />
     ));
   }
- 
+
   render() {
     $('.tooltipped').tooltip();
     return (
@@ -76,8 +78,9 @@ ListPage.propTypes = {
 };
  
 export default createContainer(() => {
+  Meteor.subscribe('employees');
   return {
-    employees: Employees.find({}).fetch(),
+    employees: Employees.find({}, {sort: { name: 1 }}).fetch(),
     employeeCount: Employees.find({}).count(),
   };
 }, ListPage);

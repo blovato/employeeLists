@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // ListPage component
-export default class error404 extends Component {
+export default class Error404 extends Component {
   render() {
     return (
       <div className="container">

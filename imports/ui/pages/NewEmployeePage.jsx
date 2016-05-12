@@ -68,6 +68,7 @@ NewEmployee.propTypes = {
 };
  
 export default createContainer(() => {
+  Meteor.subscribe('employees');
   return {
     insertEmployee: (name, email, position) => {
       Employees.insert({
